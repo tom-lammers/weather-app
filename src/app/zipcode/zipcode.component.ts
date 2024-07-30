@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from "@angular/forms";
+import {UntypedFormControl, UntypedFormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-zipcode',
@@ -7,7 +7,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class ZipcodeComponent implements OnInit {
 
-  form: FormGroup<{zipcode: FormControl<string>}>;
+  form: UntypedFormGroup<{zipcode: UntypedFormControl<string>}>;
 
   constructor() { }
 
