@@ -1,1 +1,2 @@
-<app-zipcode></app-zipcode>
+<app-zipcode (locations)="addLocation($event)"></app-zipcode>
+<app-weather-details *ngFor="let location of locations" [location]="location"></app-weather-details>

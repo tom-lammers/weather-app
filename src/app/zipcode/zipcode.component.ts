@@ -1,19 +1,24 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, NonNullableFormBuilder } from '@angular/forms';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-zipcode',
   templateUrl: './zipcode.component.html',
 })
 export class ZipcodeComponent {
-  form: FormGroup<{ zipcode: FormControl<string> }>;
-  locations: string[] = [];
+  form = new FormGroup({
+    zipcode: new FormControl<string>(''),
+  });
 
-  constructor(private fb: NonNullableFormBuilder) {
+  @Output() locations: EventEmitter<string> = new EventEmitter<string>();
+
+  constructor(private fb: FormBuilder) {
     this.form = this.fb.group({ zipcode: this.fb.control<string>('') });
   }
 
-  addLocation() {
-    this.locations.push(this.form.controls.zipcode.value);
+  saveLocation() {
+    console.log('Zipcode');
+    console.log(this.form.controls.zipcode.value);
+    this.locations.emit(this.form.controls.zipcode.value ?? '');
   }
 }
